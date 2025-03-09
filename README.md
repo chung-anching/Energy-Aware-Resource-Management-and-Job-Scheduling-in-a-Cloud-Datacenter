@@ -32,4 +32,25 @@ Average Waiting Time (minutes): 0.00
 
 PSO Scheduling Results:
 Average Waiting Time (minutes): 0.00
+```
+
+### 太陽能和碳排放調整
+- 當 `solar_watt_list` 值較大時（例如 3.357），活躍節點數量增加，允許更多工作被調度。
+- 當 `hourly_carbon_list` 值較低時（例如 0.53808131），電池會充電，`battery_level_over_time` 增加。
+
+### 視覺化
+- 新增電池電量隨時間變化的圖表，展示每個算法的電池使用情況。
+- 其他圖表（節點狀態、CPU 負載、能源消耗）保持不變。
+
+### 進一步改進
+
+#### 數據對齊
+- 當前 `solar_watt_list` 和 `hourly_carbon_list` 的長度與 `workload` 不完全匹配，可能需要補充數據或調整時間範圍。
+- `workload_list` 和 `PDU_DATA` 可以用於更精細的能耗計算（例如結合 Pwr.kW 調整節點能耗）。
+
+#### 等待時間精細化
+- 如果需要更精確的等待時間計算，可以為每個工作添加排隊機制，記錄實際排隊時間。
+
+#### 圖表優化
+- 可以添加碳排放指數和太陽能功率的時間序列圖，進一步分析調度策略的效果。
 
